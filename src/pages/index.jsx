@@ -4,7 +4,9 @@ import styles from "src/styles/Home.module.css";
 import { Footer } from "src/components/Footer";
 import { Main } from "src/components/Main";
 import { Header } from "src/components/Header";
-import { useCallback, useEffect, useState } from "react";
+import { useCounter } from "src/hooks/useCounter";
+import { useInputArray } from "src/hooks/useInputArray";
+import { useBgRebeccapurple } from "src/hooks/useBgRebeccapurple";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -17,48 +19,9 @@ const geistMono = Geist_Mono({
 });
 
 export default function Home() {
-  const [count, setCount] = useState(1);
-  const [text, setText] = useState("");
-  const [isShow, setIsShow] = useState(true);
-  const [array, setArray] = useState([]);
-
-  const handleClick = useCallback(() => {
-    if (count < 10) {
-      setCount((prevCount) => prevCount + 1);
-    }
-  }, [count]);
-
-  const handleDisplay = useCallback(() => {
-    setIsShow((prevIsShow) => !prevIsShow);
-  }, []);
-
-  const handleChange = useCallback(
-    (e) => {
-      if (e.target.value.length > 5) {
-        alert("5文字以内にしてください");
-        return;
-      }
-      setText(e.target.value);
-    },
-    [text]
-  );
-
-  const handleAdd = useCallback(() => {
-    setArray((prevArray) => {
-      if (prevArray.some((item) => item === text)) {
-        alert("同じ要素が既に存在します。");
-        return prevArray;
-      }
-      return [...prevArray, text];
-    });
-  }, [text]);
-
-  useEffect(() => {
-    document.body.style.backgroundColor = "rebeccapurple";
-    return () => {
-      document.body.style.backgroundColor = "";
-    };
-  }, []);
+  const { count, isShow, handleClick, handleDisplay } = useCounter();
+  const { text, array, handleChange, handleAdd } = useInputArray();
+  useBgRebeccapurple();
 
   return (
     <>
