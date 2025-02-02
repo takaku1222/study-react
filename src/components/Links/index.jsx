@@ -1,20 +1,9 @@
 import styles from "src/components/Links/Links.module.css";
 
-const ITEMS = [
-  {
-    href: "https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app",
-    title: "Deploy now",
-  },
-  {
-    href: "https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app",
-    title: "Read our docs",
-  },
-];
-
-export function Links() {
+export function Links({ items }) {
   return (
     <div className={styles.ctas}>
-      {ITEMS.map((item) => {
+      {items.map((item) => {
         return (
           <a
             key={item.href}
