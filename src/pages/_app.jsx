@@ -1,7 +1,14 @@
 import "src/styles/globals.css";
 import Head from "next/head";
+import { useCounter } from "src/hooks/useCounter";
+import { useInputArray } from "src/hooks/useInputArray";
+import { useBgRebeccapurple } from "src/hooks/useBgRebeccapurple";
 
-export default function App({ Component, pageProps }) {
+function MyApp({ Component, pageProps }) {
+  const counter = useCounter();
+  const inputArray = useInputArray();
+  useBgRebeccapurple();
+
   return (
     <>
       <Head>
@@ -9,7 +16,9 @@ export default function App({ Component, pageProps }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Component {...pageProps} />
+      <Component {...pageProps} {...counter} {...inputArray} />
     </>
   );
 }
+
+export default MyApp;
