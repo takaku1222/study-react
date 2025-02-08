@@ -2,7 +2,7 @@ import Head from "next/head";
 import { Geist, Geist_Mono } from "next/font/google";
 import styles from "src/styles/Home.module.css";
 import { Header } from "src/components/Header";
-import { useState, useCallback, useEffect } from "react";
+import { Posts } from "src/components/Posts";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,19 +14,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const Home = (props) => {
-  const [posts, setPosts] = useState([]);
-
-  const getPosts = useCallback(async () => {
-    const res = await fetch("https://jsonplaceholder.typicode.com/posts");
-    const json = await res.json();
-    setPosts(json);
-  }, []);
-
-  useEffect(() => {
-    getPosts();
-  }, [getPosts]);
-
+const Home = () => {
   return (
     <>
       <Head>
@@ -37,13 +25,7 @@ const Home = (props) => {
         className={`${styles.page} ${geistSans.variable} ${geistMono.variable}`}
       >
         <Header />
-        {posts.length > 0 ? (
-          <ol>
-            {posts.map((post) => {
-              return <li key={post.id}>{post.title}</li>;
-            })}
-          </ol>
-        ) : null}
+        <Posts />
       </div>
     </>
   );
