@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const PostId = () => {
+const PostsId = () => {
   return (
     <>
       <div
@@ -26,4 +26,4 @@ const PostId = () => {
   );
 };
 
-export default PostId;
+export default PostsId;

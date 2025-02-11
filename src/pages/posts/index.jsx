@@ -2,7 +2,7 @@ import Head from "next/head";
 import { Geist, Geist_Mono } from "next/font/google";
 import styles from "src/styles/Home.module.css";
 import { Header } from "src/components/Header";
-import { Posts } from "src/components/Posts";
+import { Posts as PostsComponent } from "src/components/Posts";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,21 +14,21 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const Home = () => {
+const Posts = () => {
   return (
     <>
       <Head>
-        <title>Index Page</title>
+        <title>Posts Page</title>
       </Head>
 
       <div
         className={`${styles.page} ${geistSans.variable} ${geistMono.variable}`}
       >
         <Header />
-        <Posts />
+        <PostsComponent />
       </div>
     </>
   );
 };
 
-export default Home;
+export default Posts;
