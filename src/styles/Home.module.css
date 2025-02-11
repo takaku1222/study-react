@@ -8,7 +8,9 @@
 
   align-items: center;
   justify-items: center;
+  max-width: 600px;
   min-height: 100svh;
+  margin: 0 auto;
   gap: 10px;
   font-family: var(--font-geist-sans);
 }
