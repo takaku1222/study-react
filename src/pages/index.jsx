@@ -1,5 +1,4 @@
 import Head from "next/head";
-import { Geist, Geist_Mono } from "next/font/google";
 import { Header } from "src/components/Header";
 
 const Index = () => {
