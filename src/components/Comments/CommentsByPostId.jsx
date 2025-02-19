@@ -17,16 +17,14 @@ export const CommentsByPostId = (props) => {
   }
 
   return (
-    <ol>
-      <ol>
-        {data.map((comment) => {
-          return (
-            <li key={comment.id}>
-              <Link href={`/comments/${comment.id}`}>{comment.body}</Link>
-            </li>
-          );
-        })}
-      </ol>
+    <ol className="list-disc">
+      {data.map((comment) => {
+        return (
+          <li key={comment.id}>
+            <Link href={`/comments/${comment.id}`}>{comment.body}</Link>
+          </li>
+        );
+      })}
     </ol>
   );
 };
